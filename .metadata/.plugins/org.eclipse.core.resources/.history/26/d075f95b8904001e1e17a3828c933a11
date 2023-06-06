@@ -176,15 +176,15 @@ public class Chap3Panel extends JPanel {
 		ArrayList<String> list = new ArrayList<>(); // 퍼셉트론 출력 결과값을 저장할 배열
 
 		// 출력 결과값 텍스트 표시 ----------------------------------------------------------
-		JLabel index = new JLabel("X1 X2 F   W1   W2  Y  d  W1   W2\n");
-		index.setBounds(210, 260, 200, 30);
-		index.setHorizontalAlignment(JLabel.CENTER);
-		add(index);
+//		JLabel index = new JLabel("X1 X2 F   W1   W2  Y  d  W1   W2\n");
+//		index.setBounds(210, 260, 200, 30);
+//		index.setHorizontalAlignment(JLabel.CENTER);
+//		add(index);
 
-		JLabel value = new JLabel();
-		value.setBounds(210, 290, 200, 30);
-		value.setHorizontalAlignment(JLabel.CENTER);
-		add(value);
+//		JLabel value = new JLabel();
+//		value.setBounds(210, 290, 200, 30);
+//		value.setHorizontalAlignment(JLabel.CENTER);
+//		add(value);
 
 		// 각 버튼들의 actionListener ----------------------------------------------------
 		Action action = new Action(); // 버튼들의 actionListener 객체

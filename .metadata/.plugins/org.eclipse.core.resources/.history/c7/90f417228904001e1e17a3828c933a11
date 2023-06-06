@@ -27,7 +27,7 @@ public class perceptron {
 			case 1:
 				System.out.println("\nAND");
 
-				f = new int[][] { { 0 }, { 0 }, { 0 }, { 1 } };
+				f = new int[][] { { 0 }, { 1 }, { 1 }, { 0 } };
 				learn(f, list);
 				break;
 

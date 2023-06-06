@@ -108,16 +108,16 @@ public class perceptron {
 			for (int i = 0; i < 4; i++) {
 				w[0][1] = w[0][0];
 				w[1][1] = w[1][0];
-				y = (x[i][0] * w[0][0] + x[i][1] * w[1][0] > theta) ? 1 : 0;
+				y = (Xor_x[i][0] * w[0][0] + Xor_x[i][1] * w[1][0] > theta) ? 1 : 0;
 				d = f[i][0] - y;
 				if (d == 0)
 					count++;
 				else {
-					b[0] = new BigDecimal(String.valueOf(a * d * x[i][0]));
+					b[0] = new BigDecimal(String.valueOf(a * d * Xor_x[i][0]));
 					b[1] = new BigDecimal(String.valueOf(w[0][0]));
 					w[0][0] = b[0].add(b[1]).doubleValue();
 
-					b[0] = new BigDecimal(String.valueOf(a * d * x[i][1]));
+					b[0] = new BigDecimal(String.valueOf(a * d * Xor_x[i][1]));
 					b[1] = new BigDecimal(String.valueOf(w[1][0]));
 					w[1][0] = b[0].add(b[1]).doubleValue();
 				}
