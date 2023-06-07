@@ -53,7 +53,7 @@ public class Chap2Panel extends JPanel {
 		home_img.setBounds(10, 10, 45, 29);
 		add(home_img);
 
-		// chap2 Å¸ÀÌÆ²
+		// chap2 íƒ€ì´í‹€
 		ImageIcon chap2_ImgIcon = new ImageIcon(getClass().getClassLoader().getResource("index_chap2.png"));
 		JButton chap2_img = new JButton(chap2_ImgIcon);
 		chap2_img.setBorderPainted(false);
@@ -63,22 +63,22 @@ public class Chap2Panel extends JPanel {
 		add(chap2_img);
 
 		/*
-		 * // ÆÄÀÏ ¿­±â ÀÛµ¿À» ÇÏ´Â ÆĞ³Î JPanel openPanel = new JPanel();
+		 * // íŒŒì¼ ì—´ê¸° ì‘ë™ì„ í•˜ëŠ” íŒ¨ë„ JPanel openPanel = new JPanel();
 		 * openPanel.setLayout(null); openPanel.setBackground(Color.WHITE);
 		 * openPanel.setBorder(lb);
 		 * 
-		 * // ÆÄÀÏ ¼±ÅÃ ¹öÆ° JButton chooseButton = new JButton("ÆÄÀÏ ¼±ÅÃ");
+		 * // íŒŒì¼ ì„ íƒ ë²„íŠ¼ JButton chooseButton = new JButton("íŒŒì¼ ì„ íƒ");
 		 * chooseButton.setBounds(15, 20, 110, 35); chooseButton.setFocusPainted(false);
 		 * openPanel.add(chooseButton);
 		 * 
-		 * // ÆÄÀÏ ¿­±â ¹öÆ° JButton openButton = new JButton("¿­±â"); openButton.setBounds(15,
+		 * // íŒŒì¼ ì—´ê¸° ë²„íŠ¼ JButton openButton = new JButton("ì—´ê¸°"); openButton.setBounds(15,
 		 * 75, 110, 35); openButton.setFocusPainted(false); openPanel.add(openButton);
 		 * 
 		 * openPanel.setBounds(45, 140, 540, 130); add(openPanel);
 		 */
 		/*-------------------------------------------------------------------------------------*/
-		// ½Ç½À ¿¹Á¦ ¾ç½ÄÀ» Ã¤¿öÁÖ´Â ¹öÆ°
-		JButton ex_Button = new JButton("½Ç½À ¿¹Á¦");
+		// ì‹¤ìŠµ ì˜ˆì œ ì–‘ì‹ì„ ì±„ì›Œì£¼ëŠ” ë²„íŠ¼
+		JButton ex_Button = new JButton("ì‹¤ìŠµ ì˜ˆì œ");
 		ex_Button.setBounds(45, 300, 150, 30);
 		ex_Button.setFocusPainted(false);
 		add(ex_Button);
@@ -87,13 +87,13 @@ public class Chap2Panel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				header = new String[] { "no", "Å«¼ö¼ú", "°¡Á·", "60¼¼ÀÌ»ó", "Áı" };
-				context = new String[][] { { "1", "±×·¸´Ù", "¾ø´Ù", "¾Æ´Ï´Ù", "¾Æ´Ï´Ù" }, { "2", "±×·¸´Ù", "¾ø´Ù", "±×·¸´Ù", "¾Æ´Ï´Ù" },
-						{ "3", "¾Æ´Ï´Ù", "¾ø´Ù", "¾Æ´Ï´Ù", "±×·¸´Ù" }, { "4", "¾Æ´Ï´Ù", "¾ø´Ù", "±×·¸´Ù", "¾Æ´Ï´Ù" },
-						{ "5", "¾Æ´Ï´Ù", "ÀÖ´Ù", "±×·¸´Ù", "±×·¸´Ù" } };
+				header = new String[] { "no", "í°ìˆ˜ìˆ ", "ê°€ì¡±", "60ì„¸ì´ìƒ", "ì§‘" };
+				context = new String[][] { { "1", "ê·¸ë ‡ë‹¤", "ì—†ë‹¤", "ì•„ë‹ˆë‹¤", "ì•„ë‹ˆë‹¤" }, { "2", "ê·¸ë ‡ë‹¤", "ì—†ë‹¤", "ê·¸ë ‡ë‹¤", "ì•„ë‹ˆë‹¤" },
+						{ "3", "ì•„ë‹ˆë‹¤", "ì—†ë‹¤", "ì•„ë‹ˆë‹¤", "ê·¸ë ‡ë‹¤" }, { "4", "ì•„ë‹ˆë‹¤", "ì—†ë‹¤", "ê·¸ë ‡ë‹¤", "ì•„ë‹ˆë‹¤" },
+						{ "5", "ì•„ë‹ˆë‹¤", "ìˆë‹¤", "ê·¸ë ‡ë‹¤", "ê·¸ë ‡ë‹¤" } };
 
 				table = new JTable(context, header);
-				// Ç¥ »ı¼º
+				// í‘œ ìƒì„±
 				JScrollPane tableSP = new JScrollPane(table);
 				tableSP.setOpaque(false);
 				tableSP.getViewport().setOpaque(false);
@@ -101,10 +101,10 @@ public class Chap2Panel extends JPanel {
 				table.getColumnModel().getColumn(0).setPreferredWidth(10);
 				table.getTableHeader().setPreferredSize(new Dimension(30, 30));
 
-				table.setFocusable(false); // ¿­
-				table.setRowSelectionAllowed(false); // Çà
-				table.getTableHeader().setReorderingAllowed(false); // ÀÌµ¿ºÒ°¡
-				table.getTableHeader().setResizingAllowed(false); // Å©±â Á¶Àı ºÒ°¡
+				table.setFocusable(false); // ì—´
+				table.setRowSelectionAllowed(false); // í–‰
+				table.getTableHeader().setReorderingAllowed(false); // ì´ë™ë¶ˆê°€
+				table.getTableHeader().setResizingAllowed(false); // í¬ê¸° ì¡°ì ˆ ë¶ˆê°€
 
 				tablePanel.add(tableSP);
 
@@ -117,12 +117,12 @@ public class Chap2Panel extends JPanel {
 					radioButton[i].setBackground(Color.WHITE);
 					radioButton[i].setBounds(x, 560, 125, 100);
 					x += 130;
-					radioButton[i].setFont(new Font("µ¸¿ò", Font.BOLD, 15));
+					radioButton[i].setFont(new Font("ë‹ì›€", Font.BOLD, 15));
 					add(radioButton[i]);
 				}
 				radioButton[1].setSelected(true);
 
-				JButton calStart = new JButton("°è»ê ½ÃÀÛ");
+				JButton calStart = new JButton("ê³„ì‚° ì‹œì‘");
 				calStart.setBounds(385, 680, 200, 60);
 				calStart.addActionListener(new ActionListener() {
 					MainFrame mf = mainFrame;

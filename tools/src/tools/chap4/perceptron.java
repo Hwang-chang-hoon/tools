@@ -18,11 +18,8 @@ public class perceptron {
 	static int step;
 	static BigDecimal[] b = new BigDecimal[2];
 
-	public void mainMethod(int a, double[] list) {
+	public void mainMethod( double[] list) {
 		
-			System.out.println("원하는 단층 퍼셉트론 학습을 선택하시오.");
-			System.out.print("1.AND 2.OR 3.NAND 4.종료 : ");
-			opt = a;
 			step = 1;
 				
 

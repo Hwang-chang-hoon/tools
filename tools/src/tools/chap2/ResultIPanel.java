@@ -38,7 +38,7 @@ public class ResultIPanel extends JPanel {
 		setLayout(null);
 		setBackground(Color.WHITE);
 
-		// Ã³À½À¸·Î ÀÌµ¿ÇÏ´Â ¹öÆ°
+		// ì²˜ìŒìœ¼ë¡œ ì´ë™í•˜ëŠ” ë²„íŠ¼
 		JButton home_img = new JButton(new ImageIcon(getClass().getClassLoader().getResource("home.png")));
 		home_img.setBorderPainted(false);
 		home_img.setContentAreaFilled(false);
@@ -55,14 +55,14 @@ public class ResultIPanel extends JPanel {
 		home_img.setBounds(10, 10, 45, 29);
 		add(home_img);
 
-		// title ÀÌ¹ÌÁö
+		// title ì´ë¯¸ì§€
 		JLabel iTitle_img = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ICal.png")));
 //		iTitle_img.setBorder(lb);
 
 		iTitle_img.setBounds(45, 50, 540, 86);
 		add(iTitle_img);
 
-		JButton resetButton = new JButton("´Ù½Ã ÀÔ·Â");
+		JButton resetButton = new JButton("ë‹¤ì‹œ ì…ë ¥");
 		resetButton.setBounds(485, 140, 100, 30);
 		resetButton.setFocusPainted(false);
 		add(resetButton);
@@ -77,7 +77,7 @@ public class ResultIPanel extends JPanel {
 			}
 		});
 
-		// id3 °è»ê °á°ú ¸ğÀ½ ÆĞ³Î
+		// id3 ê³„ì‚° ê²°ê³¼ ëª¨ìŒ íŒ¨ë„
 		JPanel showPanel = new JPanel();
 		showPanel.setLayout(null);
 		showPanel.setBackground(Color.WHITE);
@@ -85,11 +85,11 @@ public class ResultIPanel extends JPanel {
 		showPanel.setBounds(45, 170, 540, 530);
 		add(showPanel);
 
-		// ID3 °´Ã¼
+		// ID3 ê°ì²´
 		ID3 id3 = id3Object == null ? new ID3(I, header, context) : id3Object;
 
 
-		// Å×ÀÌºí
+		// í…Œì´ë¸”
 		String[][] tableContext = new String[1][id3.idValueArr.length];
 		for (int i = 0; i < tableContext[0].length; i++)
 			tableContext[0][i] = String.valueOf(id3.idValueArr[i]);
@@ -98,7 +98,7 @@ public class ResultIPanel extends JPanel {
 		String[] tableHeader = new String[id3.idKeyArr.length + 1];
 		for (; i < tableHeader.length-1; ++i)
 			tableHeader[i] = id3.idKeyArr[i];
-		tableHeader[tableHeader.length - 1] = "ÇÕ°è";
+		tableHeader[tableHeader.length - 1] = "í•©ê³„";
 
 		System.out.println(Arrays.toString(tableHeader)+" ///"+Arrays.deepToString(tableContext));
 
@@ -109,44 +109,44 @@ public class ResultIPanel extends JPanel {
 		tableSP.setBounds(20, 50, 100 * tableHeader.length, 60);
 		tt.setRowHeight(30);
 		tt.getTableHeader().setPreferredSize(new Dimension(30, 30));
-		tt.setFont(new Font("µ¸¿ò", Font.BOLD, 20));
+		tt.setFont(new Font("ë‹ì›€", Font.BOLD, 20));
 		showPanel.add(tableSP);
 
 		index = page;
 		if (page == 0)
 			index = I;
 
-		// Ç®ÀÌ°úÁ¤ ·¹ÀÌºí
-		JLabel processLabel = new JLabel("Ç®ÀÌ °úÁ¤");
-		processLabel.setFont(new Font("µ¸¿ò", Font.BOLD, 20));
+		// í’€ì´ê³¼ì • ë ˆì´ë¸”
+		JLabel processLabel = new JLabel("í’€ì´ ê³¼ì •");
+		processLabel.setFont(new Font("ë‹ì›€", Font.BOLD, 20));
 		processLabel.setBounds(20, 190, 100, 20);
 		showPanel.add(processLabel);
 
-		// Ç®ÀÌ°úÁ¤ ÅØ½ºÆ®ÇÊµå
+		// í’€ì´ê³¼ì • í…ìŠ¤íŠ¸í•„ë“œ
 		JTextArea processTF = new JTextArea();
 		JScrollPane sp1 = new JScrollPane(processTF);
 		sp1.setBorder(lb);
 		processTF.append("I(" + id3.header[index] + ") = " + id3.getProcess(index));
-		processTF.setFont(new Font("µ¸¿ò", Font.BOLD, 20));
+		processTF.setFont(new Font("ë‹ì›€", Font.BOLD, 20));
 		showPanel.add(sp1);
 		sp1.setBounds(20, 220, 500, 70);
 
-		// °á°ú ·¹ÀÌºí
-		JLabel resultLabel = new JLabel("°á°ú");
-		resultLabel.setFont(new Font("µ¸¿ò", Font.BOLD, 20));
+		// ê²°ê³¼ ë ˆì´ë¸”
+		JLabel resultLabel = new JLabel("ê²°ê³¼");
+		resultLabel.setFont(new Font("ë‹ì›€", Font.BOLD, 20));
 		resultLabel.setBounds(20, 330, 100, 20);
 		showPanel.add(resultLabel);
 
-		// °á°ú ÅØ½ºÆ® ÇÊµå
+		// ê²°ê³¼ í…ìŠ¤íŠ¸ í•„ë“œ
 		JTextArea resultTF = new JTextArea();
 		resultTF.setBorder(lb);
 		resultTF.append("I(" + id3.header[index] + ") =  " + id3.getResultValue(index));
-		resultTF.setFont(new Font("µ¸¿ò", Font.BOLD, 20));
+		resultTF.setFont(new Font("ë‹ì›€", Font.BOLD, 20));
 		resultTF.setBounds(20, 360, 500, 50);
 		showPanel.add(resultTF);
 
-		// ÀÇ»ç°áÁ¤ Æ®¸®·Î ÀÌµ¿ÇÏ´Â ¹öÆ°
-		JButton treeButton = new JButton("ÀÇ»ç°áÁ¤Æ®¸®");
+		// ì˜ì‚¬ê²°ì • íŠ¸ë¦¬ë¡œ ì´ë™í•˜ëŠ” ë²„íŠ¼
+		JButton treeButton = new JButton("ì˜ì‚¬ê²°ì •íŠ¸ë¦¬");
 		treeButton.setBounds(230, 710, 150, 59);
 		treeButton.setFocusPainted(false);
 		add(treeButton);

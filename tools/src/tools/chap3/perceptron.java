@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class perceptron {
 	public static ArrayList<String> array = new ArrayList<>();
 	public static int opt;
-	static int[][] x = new int[][] { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } };
-	static int[][] f = new int[4][1]; // ¸ñÇ¥ Ãâ·Â F
-	static double[][] w = new double[2][2]; // °¡ÁßÄ¡
+	static int[][] x = new int[][] { { 0, 1 }, { 1, 1 }, { 1, 1 }, { 1, 0 } };
+	static int[][] f = new int[4][1]; // ëª©í‘œ ì¶œë ¥ F
+	static double[][] w = new double[2][2]; // ê°€ì¤‘ì¹˜
 	public static double theta;
-	public static double a; // ÇĞ½À·ü
-	static int count; // ¸ğµç d°¡ 0ÀÏ¶§ step Á¾·á
+	public static double a; // í•™ìŠµë¥ 
+	static int count; // ëª¨ë“  dê°€ 0ì¼ë•Œ step ì¢…ë£Œ
 	static int y;
 	static int d;
 	static int step;
@@ -19,15 +19,15 @@ public class perceptron {
 
 	public void mainMethod(int a, double[] list) {
 		do {
-			System.out.println("¿øÇÏ´Â ´ÜÃş ÆÛ¼ÁÆ®·Ğ ÇĞ½ÀÀ» ¼±ÅÃÇÏ½Ã¿À.");
-			System.out.print("1.AND 2.OR 3.NAND 4.Á¾·á : ");
+			System.out.println("ì›í•˜ëŠ” ë‹¨ì¸µ í¼ì…‰íŠ¸ë¡  í•™ìŠµì„ ì„ íƒí•˜ì‹œì˜¤.");
+			System.out.print("1.AND 2.OR 3.NAND 4.ì¢…ë£Œ : ");
 			opt = a;
 			step = 1;
 			switch (opt) {
 			case 1:
 				System.out.println("\nAND");
 
-				f = new int[][] { { 0 }, { 0 }, { 0 }, { 1 } };
+				f = new int[][] { { 0 }, { 1 }, { 1 }, { 0 } };
 				learn(f, list);
 				break;
 
@@ -52,11 +52,11 @@ public class perceptron {
 			System.out.println();
 		} while (opt != 4);
 
-		System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+		System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 	}
 
 	public static void learn(int[][] f, double[] list) {
-		System.out.print("w1, w2, ¥è, a : ");
+		System.out.print("w1, w2, Î¸, a : ");
 		w[0][0] = list[0];
 		w[1][0] = list[1];
 		theta = list[2];
@@ -66,7 +66,7 @@ public class perceptron {
 
 		System.out.println("X1 X2 F   W1   W2  Y  d  W1   W2");
 		do {
-			if (step == 100) // 100¹øÀÌ µ¹¾Æµµ ÇĞ½ÀÀÌ ¾ÈµÈ´Ù¸é ÇĞ½ÀÀÌ ºÒ°¡´ÉÇÏ´Ù°í »ı°¢µÇ¹Ç·Î ¸ØÃã.
+			if (step == 100) // 100ë²ˆì´ ëŒì•„ë„ í•™ìŠµì´ ì•ˆëœë‹¤ë©´ í•™ìŠµì´ ë¶ˆê°€ëŠ¥í•˜ë‹¤ê³  ìƒê°ë˜ë¯€ë¡œ ë©ˆì¶¤.
 				break;
 			count = 0;
 			System.out.println("step" + (step++));

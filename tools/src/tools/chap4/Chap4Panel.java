@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 
 import tools.IndexPanel;
 import tools.MainFrame;
+import tools.chap2.ResultIPanel;
 
 public class Chap4Panel extends JPanel {
 	static LineBorder lb = new LineBorder(Color.BLUE, 1);
@@ -93,49 +94,38 @@ public class Chap4Panel extends JPanel {
 		ImageIcon picture = new ImageIcon(getClass().getClassLoader().getResource("secret_picture.png"));
 
 		Image tempimg = picture.getImage();
-		// 창의 사이즈인 500,500에 맞춰서 이미지를 변경
+		// 창의 사이즈인 530,300에 맞춰서 이미지를 변경
 		Image changeImg = tempimg.getScaledInstance(530, 300, Image.SCALE_SMOOTH);
 		ImageIcon changeIcon = new ImageIcon(changeImg);
 		JLabel img = new JLabel(changeIcon);
 
 		JPanel imgPanel = new JPanel();
-		imgPanel.setBounds(55, 170, 530, 300);
+		imgPanel.setBounds(55, 300, 530, 300);
 		imgPanel.setBackground(Color.white);
 		imgPanel.add(img);
 
 		add(imgPanel);
 
-		tablePanel.setLayout(new BorderLayout());
-		tablePanel.setBackground(Color.white);
-		tablePanel.setBounds(45, 470, 540, 200);
-		tablePanel.setBorder(lb);
-		add(tablePanel);
-
 		// ※ 버튼 생성과 위치 초기화, 패널에 추가------------------------------------------------
 		ImageIcon start_p = new ImageIcon(getClass().getClassLoader().getResource("C3_start.png"));
 		ImageIcon reset_p = new ImageIcon(getClass().getClassLoader().getResource("C3_reset.png"));
-		ImageIcon left_p = new ImageIcon(getClass().getClassLoader().getResource("left.png"));
 		ImageIcon right_p = new ImageIcon(getClass().getClassLoader().getResource("right.png"));
 		JButton start = new JButton(start_p);
-		JButton pre = new JButton(left_p);
 		JButton next = new JButton(right_p);
 		JButton reset = new JButton(reset_p);
 
 		start.setBounds(55, 680, 150, 50);
-		pre.setBounds(480, 680, 50, 50);
 		next.setBounds(535, 680, 50, 50);
 		reset.setBounds(210, 680, 150, 50);
 
 		add(start);
-		add(pre);
 		add(next);
 		add(reset);
 
 		// 각 버튼들의 actionListener ----------------------------------------------------
 		Action action = new Action(); // 버튼들의 actionListener 객체
 
-		pre.setEnabled(false);
-		next.setEnabled(false);
+		next.setEnabled(true);//false
 
 		start.addActionListener(new ActionListener() { // 시작 버튼 actionListener
 			@Override
@@ -148,7 +138,6 @@ public class Chap4Panel extends JPanel {
 					return;
 				}
 
-				pre.setEnabled(true);
 				next.setEnabled(true);
 				reset.setEnabled(true);
 				int a = 1;
@@ -160,21 +149,48 @@ public class Chap4Panel extends JPanel {
 
 				perceptron p = new perceptron();
 				p.array.clear();
-				p.mainMethod(a, array);
+				p.mainMethod(array);
 
 				textFieldFalse(input);
 
-				pre.setEnabled(false);
 				start.setEnabled(false);
 
 				if (perceptron.array.size() >= 100) {
 					textFieldFalse(input);
 
-					pre.setEnabled(false);
-					next.setEnabled(false);
+					//next.setEnabled(false);
 
 					JOptionPane.showMessageDialog(null, "학습에 실패하였습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 				}
+			}
+		});
+		reset.addActionListener(new ActionListener() { // 초기화 버튼 - 모든 입력창과 버튼 초기화(사용 가능), 값 표시할 배열과 라벨 초기화
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textFieldTrue(input);
+
+				for (int i = 0; i < input.length; i++)
+					input[i].setText("");
+
+
+				list.clear();
+
+				// value.setText("");
+
+				action.value = 0;
+
+				//next.setEnabled(false);
+				start.setEnabled(true);
+		
+			}
+		});
+		next.addActionListener(new ActionListener() {
+			MainFrame mf = mainFrame;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.changeRoom(new First_LayerNand(mf));
 			}
 		});
 
