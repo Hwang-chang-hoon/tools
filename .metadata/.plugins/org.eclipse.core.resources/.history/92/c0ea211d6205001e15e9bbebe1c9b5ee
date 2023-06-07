@@ -165,7 +165,7 @@ public class First_LayerNand extends JPanel {
 			stringArray[i] = list.get(i).split("   ");
 		}
 		String[] header = new String[] { "X1", "X2", "F", "W1", "W2", "Y", "d", "W1", "W2" };
-		table = new JTable(stringArray, header);
+		table = new JTable(FullstringArray[0], header);
 		// Ç¥ »ý¼º
 		JScrollPane tableSP = new JScrollPane(table);
 		tableSP.setOpaque(false);
