@@ -2,28 +2,35 @@ package tools.chap4;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
 import tools.IndexPanel;
 import tools.MainFrame;
-import tools.chap2.Chap2Panel;
 
 public class First_LayerNand extends JPanel {
 
 	static LineBorder lb = new LineBorder(Color.BLUE, 1);
 	static LineBorder whitelb = new LineBorder(Color.WHITE, 1);
 	JPanel tablePanel = new JPanel();
+	JTable table;
 	int i = 0;
+	static String[] tempString = new String[9];
+	static String[][] stringArray;
+	static String[][][] FullstringArray = new String[100][4][9];
 
-	public First_LayerNand(MainFrame mainFrame) {
+	public First_LayerNand(MainFrame mainFrame, String Theta) {
 		setLayout(null);
 		setBackground(Color.WHITE);
 
@@ -53,11 +60,18 @@ public class First_LayerNand extends JPanel {
 		chap4_img.setBounds(45, 50, 540, 57);
 		add(chap4_img);
 
-		// 풀이과정 레이블
+		// "NAND" 레이블
 		JLabel NANDLabel = new JLabel("NAND");
 		NANDLabel.setFont(new Font("돋움", Font.BOLD, 20));
 		NANDLabel.setBounds(20, 140, 100, 20);
 		add(NANDLabel);
+		// ※ step 글자 표시 ------------------------------------------------------------
+		JLabel step = new JLabel("Step");
+		step.setFont(new Font("Dialog", Font.BOLD, 20));
+		step.setBounds(85, 140, 100, 20);
+		add(step);
+
+		ArrayList<String> list = new ArrayList<>(); // 퍼셉트론 출력 결과값을 저장할 배열
 
 		JButton resetButton = new JButton("다시 입력");
 		resetButton.setBounds(485, 140, 100, 30);
@@ -115,12 +129,126 @@ public class First_LayerNand extends JPanel {
 		pictureText[4].setLocation(352, 314);
 		pictureText[5].setLocation(450, 295);
 
-		pictureText[0].setText("2");
-		pictureText[1].setText("2");
-		pictureText[2].setText("2");
-		pictureText[3].setText("3");
-		pictureText[4].setText("3");
-		pictureText[5].setText("3");
+		// ※ 버튼 생성과 위치 초기화, 패널에 추가------------------------------------------------
+
+		ImageIcon left_p = new ImageIcon(getClass().getClassLoader().getResource("left.png"));
+		ImageIcon right_p = new ImageIcon(getClass().getClassLoader().getResource("right.png"));
+		ImageIcon turn_p = new ImageIcon(getClass().getClassLoader().getResource("right.png"));
+
+		JButton pre = new JButton(left_p);
+		JButton next = new JButton(right_p);
+		JButton turn = new JButton(turn_p);
+
+		pre.setBounds(480, 680, 50, 50);
+		next.setBounds(535, 680, 50, 50);
+		turn.setBounds(535, 750, 50, 50);
+
+		add(pre);
+		add(next);
+		add(turn);
+
+		step.setText("Step 1");
+
+		// 각 버튼들의 actionListener ----------------------------------------------------
+		Action action = new Action(); // 버튼들의 actionListener 객체
+
+		pre.setEnabled(false);
+		next.setEnabled(true);
+		turn.setEnabled(false);
+
+		pictureText[4].setText(Theta);
+
+		list.addAll(perceptronNand.array);
+		stringArray = new String[list.size()][9];
+		// value.setText(perceptron.array.get(0));
+		for (int i = 0; i < list.size(); i++) {
+			stringArray[i] = list.get(i).split("   ");
+		}
+		String[] header = new String[] { "X1", "X2", "F", "W1", "W2", "Y", "d", "W1", "W2" };
+		table = new JTable(FullstringArray[0], header);
+		// 표 생성
+		JScrollPane tableSP = new JScrollPane(table);
+		tableSP.setOpaque(false);
+		tableSP.getViewport().setOpaque(false);
+		table.setRowHeight(30);
+		table.getTableHeader().setPreferredSize(new Dimension(30, 30));
+
+		table.setFocusable(false); // 열
+		table.setRowSelectionAllowed(false); // 행
+		table.getTableHeader().setReorderingAllowed(false); // 이동불가
+		table.getTableHeader().setResizingAllowed(false); // 크기 조절 불가
+
+		tablePanel.add(tableSP);
+
+		action.s = list.get(0).split("   ");
+
+		pictureText[0].setText(action.s[0]);
+		pictureText[1].setText(action.s[1]);
+		pictureText[2].setText(action.s[3]);
+		pictureText[3].setText(action.s[4]);
+		pictureText[5].setText(action.s[5]);
+
+		pre.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// value.setText(list.get(--action.value)); // 현재 값 이전 위치의 값을 저장.
+				--action.value;
+
+				if (action.value == 0)
+					pre.setEnabled(false);
+
+				if (action.value < list.size() - 1)
+					next.setEnabled(true);
+				
+
+				action.s = list.get(action.value).split("   ");
+
+				pictureText[0].setText(action.s[0]);
+				pictureText[1].setText(action.s[1]);
+				pictureText[2].setText(action.s[3]);
+				pictureText[3].setText(action.s[4]);
+				pictureText[5].setText(action.s[5]);
+
+				step.setText("Step " + Integer.toString(action.value / 4 + 1));
+			}
+		});
+
+		next.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// value.setText(list.get(++action.value)); // 현재 값 다음 위치의 값 저장.
+				++action.value;
+
+				if (action.value == list.size() - 1) {
+					next.setEnabled(false);
+					turn.setEnabled(true);
+				}
+
+				if (action.value > 0)
+					pre.setEnabled(true);
+				
+
+				action.s = list.get(action.value).split("   ");
+
+				pictureText[0].setText(action.s[0]);
+				pictureText[1].setText(action.s[1]);
+				pictureText[2].setText(action.s[3]);
+				pictureText[3].setText(action.s[4]);
+				pictureText[5].setText(action.s[5]);
+
+				step.setText("Step " + Integer.toString(action.value / 4 + 1));
+			}
+		});
+		turn.addActionListener(new ActionListener() {
+			MainFrame mf = mainFrame;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				mainFrame.changeRoom(new First_LayerOr(mf, Theta));
+			}
+		});
 
 		i = 0;
 		for (; i < pictureText.length; i++)

@@ -20,7 +20,6 @@ import javax.swing.border.LineBorder;
 
 import tools.IndexPanel;
 import tools.MainFrame;
-import tools.chap2.ResultIPanel;
 
 public class Chap4Panel extends JPanel {
 	static LineBorder lb = new LineBorder(Color.BLUE, 1);
@@ -108,26 +107,18 @@ public class Chap4Panel extends JPanel {
 
 		// ※ 버튼 생성과 위치 초기화, 패널에 추가------------------------------------------------
 		ImageIcon start_p = new ImageIcon(getClass().getClassLoader().getResource("C3_start.png"));
-		ImageIcon reset_p = new ImageIcon(getClass().getClassLoader().getResource("C3_reset.png"));
-		ImageIcon right_p = new ImageIcon(getClass().getClassLoader().getResource("right.png"));
+		
 		JButton start = new JButton(start_p);
-		JButton next = new JButton(right_p);
-		JButton reset = new JButton(reset_p);
 
-		start.setBounds(55, 680, 150, 50);
-		next.setBounds(535, 680, 50, 50);
-		reset.setBounds(210, 680, 150, 50);
+		start.setBounds(385, 680, 200, 60);
 
 		add(start);
-		add(next);
-		add(reset);
 
 		// 각 버튼들의 actionListener ----------------------------------------------------
 		Action action = new Action(); // 버튼들의 actionListener 객체
-
-		next.setEnabled(true);//false
-
 		start.addActionListener(new ActionListener() { // 시작 버튼 actionListener
+			MainFrame mf = mainFrame;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -138,8 +129,6 @@ public class Chap4Panel extends JPanel {
 					return;
 				}
 
-				next.setEnabled(true);
-				reset.setEnabled(true);
 				int a = 1;
 
 				double[] array = new double[4]; // 입력창에 입력된 값들 저장
@@ -150,6 +139,18 @@ public class Chap4Panel extends JPanel {
 				perceptron p = new perceptron();
 				p.array.clear();
 				p.mainMethod(array);
+				
+				perceptronNand pNand = new perceptronNand();
+				pNand.array.clear();
+				pNand.mainMethod(array);
+				
+				perceptronOr pOr = new perceptronOr();
+				pOr.array.clear();
+				pOr.mainMethod(array);
+				
+				perceptronAnd pAnd = new perceptronAnd();
+				pAnd.array.clear();
+				pAnd.mainMethod(array);
 
 				textFieldFalse(input);
 
@@ -158,39 +159,12 @@ public class Chap4Panel extends JPanel {
 				if (perceptron.array.size() >= 100) {
 					textFieldFalse(input);
 
-					//next.setEnabled(false);
-
 					JOptionPane.showMessageDialog(null, "학습에 실패하였습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+				} else {
+					String Theta = input[2].getText().trim();
+					mainFrame.changeRoom(new  First_LayerNand(mf, Theta));
 				}
-			}
-		});
-		reset.addActionListener(new ActionListener() { // 초기화 버튼 - 모든 입력창과 버튼 초기화(사용 가능), 값 표시할 배열과 라벨 초기화
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				textFieldTrue(input);
 
-				for (int i = 0; i < input.length; i++)
-					input[i].setText("");
-
-
-				list.clear();
-
-				// value.setText("");
-
-				action.value = 0;
-
-				//next.setEnabled(false);
-				start.setEnabled(true);
-		
-			}
-		});
-		next.addActionListener(new ActionListener() {
-			MainFrame mf = mainFrame;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				mainFrame.changeRoom(new First_LayerNand(mf));
 			}
 		});
 
@@ -214,16 +188,6 @@ public class Chap4Panel extends JPanel {
 	public static void textFieldFalse(JTextField[] j2) { // textfield 전부 입력 불가능
 		for (int i = 0; i < j2.length; i++)
 			j2[i].setEnabled(false);
-	}
-
-	public static void radioButtonTrue(JRadioButton[] r1) { // radiobutton 전부 사용 가능
-		for (int i = 0; i < r1.length; i++)
-			r1[i].setEnabled(true);
-	}
-
-	public static void radioButtonFalse(JRadioButton[] r2) { // radiobutton 전부 사용 불가능
-		for (int i = 0; i < r2.length; i++)
-			r2[i].setEnabled(false);
 	}
 
 }

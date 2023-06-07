@@ -50,11 +50,11 @@ public class Chap3Panel extends JPanel {
 		chap3_img.setFocusPainted(false);
 		chap3_img.setBounds(45, 50, 540, 57);
 		add(chap3_img);
-		// -----------------------------------------------------------ìœ„ì—ê¹Œì§€ ì€ì• ê°€ í•œ ê²ƒ.
+		// -----------------------------------------------------------À§¿¡±îÁö Àº¾Ö°¡ ÇÑ °Í.
 
 		int i = 0;
 
-		// â€» ë¼ë””ì˜¤ ë²„íŠ¼ ìƒì„±, ê·¸ë£¹í™”, andë¥¼ ì´ˆê¸°ê°’ ì„¤ì •, ìœ„ì¹˜ ì´ˆê¸°í™”, íŒ¨ë„ ì¶”ê°€------------------------
+		// ¡Ø ¶óµğ¿À ¹öÆ° »ı¼º, ±×·ìÈ­, and¸¦ ÃÊ±â°ª ¼³Á¤, À§Ä¡ ÃÊ±âÈ­, ÆĞ³Î Ãß°¡------------------------
 		JRadioButton[] r = new JRadioButton[3];
 		r[0] = new JRadioButton("AND");
 		r[1] = new JRadioButton("OR");
@@ -69,14 +69,14 @@ public class Chap3Panel extends JPanel {
 		for (int x = 155; i < r.length; i++) {
 			r[i].setBounds(x, 130, 100, 50);
 			r[i].setBackground(Color.white);
-			r[i].setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
+			r[i].setFont(new Font("±¼¸²", Font.BOLD, 20));
 			x += 105;
 			add(r[i]);
 		}
 
 		r[0].setSelected(true);
 
-		// â€» ìƒˆ íŒ¨ë„ì— ì´ë¯¸ì§€ ë„£ê³  z-orderê°’ ì¡°ì ˆí•´ì„œ ì´ë¯¸ì§€ ìœ„ì— ê¸€ì”¨ í‘œì‹œ
+		// ¡Ø »õ ÆĞ³Î¿¡ ÀÌ¹ÌÁö ³Ö°í z-order°ª Á¶ÀıÇØ¼­ ÀÌ¹ÌÁö À§¿¡ ±Û¾¾ Ç¥½Ã
 		ImageIcon picture = new ImageIcon(getClass().getClassLoader().getResource("picture.png"));
 		JLabel img = new JLabel(picture);
 
@@ -117,7 +117,7 @@ public class Chap3Panel extends JPanel {
 			setComponentZOrder(pictureText[i], i);
 		setComponentZOrder(imgPanel, 6);
 
-		// â€» ë²„íŠ¼ ìƒì„±ê³¼ ìœ„ì¹˜ ì´ˆê¸°í™”, íŒ¨ë„ì— ì¶”ê°€------------------------------------------------
+		// ¡Ø ¹öÆ° »ı¼º°ú À§Ä¡ ÃÊ±âÈ­, ÆĞ³Î¿¡ Ãß°¡------------------------------------------------
 		ImageIcon start_p = new ImageIcon(getClass().getClassLoader().getResource("C3_start.png"));
 		ImageIcon reset_p = new ImageIcon(getClass().getClassLoader().getResource("C3_reset.png"));
 		ImageIcon left_p = new ImageIcon(getClass().getClassLoader().getResource("left.png"));
@@ -137,12 +137,12 @@ public class Chap3Panel extends JPanel {
 		add(next);
 		add(reset);
 
-		// â€» ë¼ë²¨ ì„ ì–¸ê³¼ ì´ˆê¸°í™” ------------------------------------------------------------
+		// ¡Ø ¶óº§ ¼±¾ğ°ú ÃÊ±âÈ­ ------------------------------------------------------------
 		JLabel[] text = new JLabel[4];
 
 		text[0] = new JLabel("w1");
 		text[1] = new JLabel("w2");
-		text[2] = new JLabel("Î¸");
+		text[2] = new JLabel("¥è");
 		text[3] = new JLabel("a");
 
 		i = 0;
@@ -156,13 +156,13 @@ public class Chap3Panel extends JPanel {
 		for (i = 0; i < text.length; i++)
 			add(text[i]);
 
-		// â€» step ê¸€ì í‘œì‹œ ------------------------------------------------------------
+		// ¡Ø step ±ÛÀÚ Ç¥½Ã ------------------------------------------------------------
 		JLabel step = new JLabel("Step");
 		step.setFont(new Font("Dialog", Font.BOLD, 20));
 		step.setBounds(55, 310, 100, 30);
 		add(step);
 
-		// â€» í…ìŠ¤íŠ¸ í•„ë“œ ë°°ì—´ ì„ ì–¸, ìœ„ì¹˜ ì´ˆê¸°í™”, ì¶”ê°€--------------------------------------------
+		// ¡Ø ÅØ½ºÆ® ÇÊµå ¹è¿­ ¼±¾ğ, À§Ä¡ ÃÊ±âÈ­, Ãß°¡--------------------------------------------
 		JTextField[] input = new JTextField[4];
 
 		i = 0;
@@ -173,9 +173,9 @@ public class Chap3Panel extends JPanel {
 			add(input[i]);
 		}
 
-		ArrayList<String> list = new ArrayList<>(); // í¼ì…‰íŠ¸ë¡  ì¶œë ¥ ê²°ê³¼ê°’ì„ ì €ì¥í•  ë°°ì—´
+		ArrayList<String> list = new ArrayList<>(); // ÆÛ¼ÁÆ®·Ğ Ãâ·Â °á°ú°ªÀ» ÀúÀåÇÒ ¹è¿­
 
-		// ì¶œë ¥ ê²°ê³¼ê°’ í…ìŠ¤íŠ¸ í‘œì‹œ ----------------------------------------------------------
+		// Ãâ·Â °á°ú°ª ÅØ½ºÆ® Ç¥½Ã ----------------------------------------------------------
 //		JLabel index = new JLabel("X1 X2 F   W1   W2  Y  d  W1   W2\n");
 //		index.setBounds(210, 260, 200, 30);
 //		index.setHorizontalAlignment(JLabel.CENTER);
@@ -186,20 +186,20 @@ public class Chap3Panel extends JPanel {
 //		value.setHorizontalAlignment(JLabel.CENTER);
 //		add(value);
 
-		// ê° ë²„íŠ¼ë“¤ì˜ actionListener ----------------------------------------------------
-		Action action = new Action(); // ë²„íŠ¼ë“¤ì˜ actionListener ê°ì²´
+		// °¢ ¹öÆ°µéÀÇ actionListener ----------------------------------------------------
+		Action action = new Action(); // ¹öÆ°µéÀÇ actionListener °´Ã¼
 
 		pre.setEnabled(false);
 		next.setEnabled(false);
 
-		start.addActionListener(new ActionListener() { // ì‹œì‘ ë²„íŠ¼ actionListener
+		start.addActionListener(new ActionListener() { // ½ÃÀÛ ¹öÆ° actionListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				// ê°’ ì…ë ¥ ì—†ì„ ë•Œ ì—ëŸ¬ ë©”ì‹œì§€ ì¶œë ¥
+				// °ª ÀÔ·Â ¾øÀ» ¶§ ¿¡·¯ ¸Ş½ÃÁö Ãâ·Â
 				if (!isStringDouble(input)) {
-					JOptionPane.showMessageDialog(null, "ê°’ì„ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”.", "ê°’ ì˜¤ë¥˜", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "°ªÀ» ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.", "°ª ¿À·ù", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
@@ -213,7 +213,7 @@ public class Chap3Panel extends JPanel {
 
 				int a = 0;
 
-				// ë¼ë””ì˜¤ ë²„íŠ¼ ì„ íƒì— ë”°ë¼ and, or, nand ê°’ ì…ë ¥
+				// ¶óµğ¿À ¹öÆ° ¼±ÅÃ¿¡ µû¶ó and, or, nand °ª ÀÔ·Â
 				if (r[0].isSelected())
 					a = 1;
 				else if (r[1].isSelected())
@@ -221,7 +221,7 @@ public class Chap3Panel extends JPanel {
 				else if (r[2].isSelected())
 					a = 3;
 
-				double[] array = new double[4]; // ì…ë ¥ì°½ì— ì…ë ¥ëœ ê°’ë“¤ ì €ì¥
+				double[] array = new double[4]; // ÀÔ·ÂÃ¢¿¡ ÀÔ·ÂµÈ °ªµé ÀúÀå
 
 				for (int i = 0; i < array.length; i++)
 					array[i] = Double.parseDouble(input[i].getText());
@@ -243,7 +243,7 @@ public class Chap3Panel extends JPanel {
 
 					radioButtonFalse(r);
 
-					JOptionPane.showMessageDialog(null, "í•™ìŠµì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.", "ì˜¤ë¥˜", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ÇĞ½À¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.", "¿À·ù", JOptionPane.ERROR_MESSAGE);
 				} else {
 					pictureText[4].setText(input[2].getText().trim());
 					list.addAll(perceptron.array);
@@ -263,7 +263,7 @@ public class Chap3Panel extends JPanel {
 		pre.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// value.setText(list.get(--action.value)); // í˜„ì¬ ê°’ ì´ì „ ìœ„ì¹˜ì˜ ê°’ì„ ì €ì¥.
+				// value.setText(list.get(--action.value)); // ÇöÀç °ª ÀÌÀü À§Ä¡ÀÇ °ªÀ» ÀúÀå.
 				--action.value;
 
 				if (action.value == 0)
@@ -287,7 +287,7 @@ public class Chap3Panel extends JPanel {
 		next.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// value.setText(list.get(++action.value)); // í˜„ì¬ ê°’ ë‹¤ìŒ ìœ„ì¹˜ì˜ ê°’ ì €ì¥.
+				// value.setText(list.get(++action.value)); // ÇöÀç °ª ´ÙÀ½ À§Ä¡ÀÇ °ª ÀúÀå.
 				++action.value;
 
 				if (action.value == list.size() - 1)
@@ -308,7 +308,7 @@ public class Chap3Panel extends JPanel {
 			}
 		});
 
-		reset.addActionListener(new ActionListener() { // ì´ˆê¸°í™” ë²„íŠ¼ - ëª¨ë“  ì…ë ¥ì°½ê³¼ ë²„íŠ¼ ì´ˆê¸°í™”(ì‚¬ìš© ê°€ëŠ¥), ê°’ í‘œì‹œí•  ë°°ì—´ê³¼ ë¼ë²¨ ì´ˆê¸°í™”
+		reset.addActionListener(new ActionListener() { // ÃÊ±âÈ­ ¹öÆ° - ¸ğµç ÀÔ·ÂÃ¢°ú ¹öÆ° ÃÊ±âÈ­(»ç¿ë °¡´É), °ª Ç¥½ÃÇÒ ¹è¿­°ú ¶óº§ ÃÊ±âÈ­
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				textFieldTrue(input);
@@ -337,7 +337,7 @@ public class Chap3Panel extends JPanel {
 		});
 	}
 
-	public static boolean isStringDouble(JTextField[] t) { // ì…ë ¥ì°½ì˜ ê°’ì´ doubleí˜•ì´ ë§ëŠ”ì§€ í™•ì¸
+	public static boolean isStringDouble(JTextField[] t) { // ÀÔ·ÂÃ¢ÀÇ °ªÀÌ doubleÇüÀÌ ¸Â´ÂÁö È®ÀÎ
 		try {
 			for (int i = 0; i < t.length; i++)
 				Double.parseDouble(t[i].getText());
@@ -347,22 +347,22 @@ public class Chap3Panel extends JPanel {
 		return true;
 	}
 
-	public static void textFieldTrue(JTextField[] j1) { // textfield ì „ë¶€ ì…ë ¥ ê°€ëŠ¥
+	public static void textFieldTrue(JTextField[] j1) { // textfield ÀüºÎ ÀÔ·Â °¡´É
 		for (int i = 0; i < j1.length; i++)
 			j1[i].setEnabled(true);
 	}
 
-	public static void textFieldFalse(JTextField[] j2) { // textfield ì „ë¶€ ì…ë ¥ ë¶ˆê°€ëŠ¥
+	public static void textFieldFalse(JTextField[] j2) { // textfield ÀüºÎ ÀÔ·Â ºÒ°¡´É
 		for (int i = 0; i < j2.length; i++)
 			j2[i].setEnabled(false);
 	}
 
-	public static void radioButtonTrue(JRadioButton[] r1) { // radiobutton ì „ë¶€ ì‚¬ìš© ê°€ëŠ¥
+	public static void radioButtonTrue(JRadioButton[] r1) { // radiobutton ÀüºÎ »ç¿ë °¡´É
 		for (int i = 0; i < r1.length; i++)
 			r1[i].setEnabled(true);
 	}
 
-	public static void radioButtonFalse(JRadioButton[] r2) { // radiobutton ì „ë¶€ ì‚¬ìš© ë¶ˆê°€ëŠ¥
+	public static void radioButtonFalse(JRadioButton[] r2) { // radiobutton ÀüºÎ »ç¿ë ºÒ°¡´É
 		for (int i = 0; i < r2.length; i++)
 			r2[i].setEnabled(false);
 	}
